@@ -120,10 +120,19 @@ bool UrgNode::updateStatus()
   service_yield_ = true;
   boost::mutex::scoped_lock lock(lidar_mutex_);
 
+
+  //getSensorStatus often fails the first time, just do it once and ignore the data
+  static bool first_run_done(false);
+
+  if (!first_run_done) {
+    device_status_ = urg_->getSensorStatus();
+    ros::Duration(0.1).sleep();
+    first_run_done = true;
+  }
+
   if (urg_)
   {
     device_status_ = urg_->getSensorStatus();
-
     if (detailed_status_)
     {
       URGStatus status;
@@ -298,6 +307,16 @@ void UrgNode::populateDiagnosticsStatus(diagnostic_updater::DiagnosticStatusWrap
         "Not Connected");
     return;
   }
+  
+
+  static int update_count(0);
+
+  //amaldo
+  //This works fine on the URG_LX10, but makes the safety UAM-05LP drop one scan
+  if (update_count < 30) {
+    updateStatus();
+    update_count++;
+  }
 
   if (!urg_->getIPAddress().empty())
   {
@@ -309,6 +328,7 @@ void UrgNode::populateDiagnosticsStatus(diagnostic_updater::DiagnosticStatusWrap
     stat.add("Serial Port", urg_->getSerialPort());
     stat.add("Serial Baud", urg_->getSerialBaud());
   }
+
 
   if (!urg_->isStarted())
   {
@@ -342,7 +362,6 @@ void UrgNode::populateDiagnosticsStatus(diagnostic_updater::DiagnosticStatusWrap
   stat.add("Vendor Name", vendor_name_);
   stat.add("Product Name", product_name_);
   stat.add("Firmware Version", firmware_version_);
-  stat.add("Firmware Date", firmware_date_);
   stat.add("Protocol Version", protocol_version_);
   stat.add("Device ID", device_id_);
   stat.add("Computed Latency", urg_->getComputedLatency());
@@ -402,7 +421,6 @@ bool UrgNode::connect()
     vendor_name_ = urg_->getVendorName();
     product_name_ = urg_->getProductName();
     firmware_version_ = urg_->getFirmwareVersion();
-    firmware_date_ = urg_->getFirmwareDate();
     protocol_version_ = urg_->getProtocolVersion();
     device_id_ = urg_->getDeviceID();
 
