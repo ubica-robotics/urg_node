@@ -340,7 +340,7 @@ void UrgNode::updateDiagnostics()
 {
   while (!close_diagnostics_) {
     diagnostic_updater_.force_update();
-    std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   }
 }
 
@@ -605,7 +605,8 @@ void UrgNode::run()
 
   //// Now that we are setup, kick off diagnostics.
   close_diagnostics_ = false;
-  diagnostics_thread_ = std::thread(std::bind(&UrgNode::updateDiagnostics, this));
+  //stop running a separate thread
+  //diagnostics_thread_ = std::thread(std::bind(&UrgNode::updateDiagnostics, this));
 
   // Start scanning now that everything is configured.
   close_scan_ = false;
