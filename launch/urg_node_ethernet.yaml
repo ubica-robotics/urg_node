@@ -11,7 +11,7 @@ urg_node:
     diagnostics_tolerance: 0.05
     diagnostics_window_time: 5.0
     error_limit: 4
-    get_detailed_status: false
+    get_detailed_status: true
     publish_intensity: false
     publish_multiecho: false
     cluster: 1

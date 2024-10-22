@@ -350,7 +350,7 @@ bool URGCWrapper::getAR00Status(URGStatus & status)
   }
 
   // Debug output reponse up to scan data.
-  RCLCPP_DEBUG(logger_, "Response: %s", response.substr(0, 41).c_str());
+  RCLCPP_DEBUG(logger_, "Response: %s", response.substr(0, 44).c_str());
   // Decode the result if crc checks out.
   // Grab the status
   ss.clear();
@@ -399,6 +399,40 @@ bool URGCWrapper::getAR00Status(URGStatus & status)
   ss << response.substr(16, 1);
   RCLCPP_DEBUG(logger_, "Lockout: %s", response.substr(16, 1).c_str());
   ss >> std::hex >> status.lockout_status;
+
+  ss.clear();
+  ss << response.substr(17, 1);
+  RCLCPP_DEBUG(logger_, "OSSD 1 State: %s", response.substr(17, 1).c_str());
+
+  ss.clear();
+  ss << response.substr(18, 1);
+  RCLCPP_DEBUG(logger_, "OSSD 2 State: %s", response.substr(18, 1).c_str());
+
+  ss.clear();
+  ss << response.substr(19, 1);
+  RCLCPP_DEBUG(logger_, "Warning 1 State: %s", response.substr(19, 1).c_str());
+
+  ss.clear();
+  ss << response.substr(20, 1);
+  RCLCPP_DEBUG(logger_, "Warning 2 State: %s", response.substr(20, 1).c_str());
+
+  ss.clear();
+  ss << response.substr(33, 8);
+  RCLCPP_DEBUG(logger_, "Time Stamp: %s", response.substr(33, 8).c_str());
+
+  ss.clear();
+  ss << response.substr(41, 1);
+  RCLCPP_DEBUG(logger_, "Laser Off: %s", response.substr(41, 1).c_str());
+
+  // Get optical window contamination warning
+  ss.clear();
+  ss << response.substr(42, 1);
+  RCLCPP_DEBUG(logger_, "Opt. Window Contamination: %s", response.substr(42, 1).c_str());
+  ss >> std::hex >> status.optical_window_contaminated;
+
+  ss.clear();
+  ss << response.substr(43, 1);
+  RCLCPP_DEBUG(logger_, "Encoder Pattern: %s", response.substr(43, 1).c_str());
 
   return true;
 }

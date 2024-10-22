@@ -36,6 +36,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <mutex>
 
 namespace urg_node
 {
@@ -162,6 +163,7 @@ bool UrgNode::updateStatus()
         msg.error_status = status.error_status;
         msg.error_code = status.error_code;
         msg.lockout_status = status.lockout_status;
+        msg.optical_window_contaminated = status.optical_window_contaminated;
 
         lockout_status_ = status.lockout_status;
         error_code_ = status.error_code;
