@@ -2,8 +2,8 @@
 Changelog for package urg_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+101.2.1 (2025-03-31)
+--------------------
 * Fix parsing of optical_window_contaminated
 * README syntax updates (`#112 <https://github.com/ubica-robotics/urg_node/issues/112>`_)
   Updates to ROS 2 syntax and minor rewording. I also moved RViz to the
