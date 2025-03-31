@@ -2,6 +2,13 @@
 Changelog for package urg_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Fix parsing of optical_window_contaminated
+* README syntax updates (`#112 <https://github.com/ubica-robotics/urg_node/issues/112>`_)
+  Updates to ROS 2 syntax and minor rewording. I also moved RViz to the
+  visualization section.
+
 1.1.1 (2023-03-18)
 ------------------
 * add branch information
@@ -10,6 +17,7 @@ Changelog for package urg_node
   This is just a quick PR to increase the thread sleep in the diagnostics thread. Currently the diagnostics status is updated at ~96hz. Which is way too fast and really messes with the Frequency Status Monitor which jumps between too low and too high
 * Added URDF for UST10. (`#103 <https://github.com/ros-drivers/urg_node/issues/103>`_)
 * Contributors: Michael Ferguson, Richard, Tony Baltovski
+
 
 1.1.0 (2021-03-31)
 ------------------
