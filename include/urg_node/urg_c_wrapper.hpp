@@ -64,6 +64,8 @@ public:
     error_code = 0;
     lockout_status = false;
     optical_window_contaminated = false;
+    ossd_1 = false;
+    ossd_2 = false;
   }
 
   uint16_t status;
@@ -73,6 +75,8 @@ public:
   uint16_t error_code;
   bool lockout_status;
   bool optical_window_contaminated;
+  bool ossd_1;
+  bool ossd_2;
 };
 
 class UrgDetectionReport
