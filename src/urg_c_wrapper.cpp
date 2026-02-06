@@ -397,12 +397,12 @@ bool URGCWrapper::getAR00Status(URGStatus & status)
   uint16_t unused0;
 
   s = response.substr(17, 1);
-  unused0 = std::stoul(s, nullptr, 16);
-  RCLCPP_DEBUG(logger_, "OSSD 1: 0x%s = %d", s.c_str(), unused0);
+  status.ossd_1 = std::stoul(s, nullptr, 16);
+  RCLCPP_DEBUG(logger_, "OSSD 1: 0x%s = %d", s.c_str(), status.ossd_1);
 
   s = response.substr(18, 1);
-  unused0 = std::stoul(s, nullptr, 16);
-  RCLCPP_DEBUG(logger_, "OSSD 2: 0x%s = %d", s.c_str(), unused0);
+  status.ossd_2 = std::stoul(s, nullptr, 16);
+  RCLCPP_DEBUG(logger_, "OSSD 2: 0x%s = %d", s.c_str(), status.ossd_2);
 
   s = response.substr(19, 1);
   unused0 = std::stoul(s, nullptr, 16);
