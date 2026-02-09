@@ -167,6 +167,8 @@ bool UrgNode::updateStatus()
         msg.error_code = status.error_code;
         msg.lockout_status = status.lockout_status;
         msg.optical_window_contaminated = status.optical_window_contaminated;
+        msg.ossd_1 = status.ossd_1;
+        msg.ossd_2 = status.ossd_2;
 
         lockout_status_ = status.lockout_status;
         error_code_ = status.error_code;
