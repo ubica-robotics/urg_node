@@ -2,8 +2,8 @@
 Changelog for package urg_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+101.2.2 (2026-02-09)
+--------------------
 * [urg_node] Extend laser driver to publish breaching of safety zones to ROS
 * update branch names
 * 1.2.0
