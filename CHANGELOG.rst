@@ -2,13 +2,23 @@
 Changelog for package urg_node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* [urg_node] Extend laser driver to publish breaching of safety zones to ROS
+* update branch names
+* 1.2.0
+* update changelogs
+* replace ament_target_dependencies (`#120 <https://github.com/ubica-robotics/urg_node/issues/120>`_)
+* 1.1.2
+* update changelog
+* Contributors: Michael Ferguson, Thomas Lipps
+
 101.2.1 (2025-03-31)
 --------------------
 * Fix parsing of optical_window_contaminated
 * README syntax updates (`#112 <https://github.com/ubica-robotics/urg_node/issues/112>`_)
   Updates to ROS 2 syntax and minor rewording. I also moved RViz to the  visualization section.
 
-=======
 1.2.0 (2025-05-23)
 ------------------
 * replace ament_target_dependencies (`#120 <https://github.com/ros-drivers/urg_node/issues/120>`_)
